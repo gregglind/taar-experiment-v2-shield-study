@@ -121,9 +121,9 @@ var config = {
   "isEligible": async function() {
 
     // Ensure that profile age is available
-    console.log("awaiting telemetry environment initialization");
-    await TelemetryEnvironment.onInitialized();
-    console.log("telemetry environment initialized");
+    console.log("awaiting telemetry controller initialization");
+    await TelemetryController.promiseInitialized();
+    console.log("telemetry controller initialized");
 
     const locale = TelemetryEnvironment.currentEnvironment.settings.locale.toLowerCase();
     console.log("locale", locale);
