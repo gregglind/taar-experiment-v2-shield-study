@@ -133,10 +133,6 @@ function shutdown(addonData, reason) {
       this.feature.shutdown();
     }
 
-    // clean up our modules.
-    Cu.unload(CONFIGPATH);
-    Cu.unload(STUDYUTILSPATH);
-
     if (!studyUtils._isEnding) {
       // we are the first 'uninstall' requestor => must be user action.
       log.debug("probably: user requested shutdown");
@@ -144,7 +140,9 @@ function shutdown(addonData, reason) {
       return;
     }
     // normal shutdown, or 2nd uninstall request
-
+    // unload Shield modules
+    Cu.unload(CONFIGPATH);
+    Cu.unload(STUDYUTILSPATH);
   }
 }
 
